@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CalenderItem from "../CalenderItem/CalenderItem";
 
-const weekDays = {
-	Mon: 0,
-	Tue: 1,
-	Wed: 2,
-	Thu: 3,
-	Fri: 4,
-	Sat: 5,
-	Sun: 6,
-};
-
 const isFebruary29 = () => {
 	const year = new Date().getFullYear();
 	if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
@@ -52,6 +42,15 @@ const months = [
 	"Oct",
 	"Dec",
 ];
+const weekDays = {
+	Mon: 0,
+	Tue: 1,
+	Wed: 2,
+	Thu: 3,
+	Fri: 4,
+	Sat: 5,
+	Sun: 6,
+};
 
 const Calendar = () => {
 	const [dateIndex, setDateIndex] = useState(0);
@@ -61,31 +60,34 @@ const Calendar = () => {
 	const [calenderIndexes, setCalenderIndexes] = useState([]);
 
 	const orderCalender = (dateArray) => {
-		let [day, month, , year] = dateArray;
-		let todayIndex = new Date().getDate();
+		let [day, month, today, year] = dateArray;
+		let firstDayOfMonthIndex =
+			new Date(parseInt(year), months.indexOf(month), 1).getDay() - 1;
 
-		console.log(day, month, year);
+		console.log(firstDayOfMonthIndex);
 
 		let orderedMonthArray = [];
 		let dayIndex = weekDays[day];
 		let thisMonthLength = daysInMonths[month];
 
 		let prevMonthLength = daysInMonths[months[months.indexOf(month) - 1]];
-		for (let i = dayIndex - 1; i >= 0; i--) {
+		for (let i = firstDayOfMonthIndex - 1; i >= 0; i--) {
 			orderedMonthArray.push(prevMonthLength - i);
 		}
 		for (let i = 1; i <= thisMonthLength; i++) {
 			orderedMonthArray.push(i);
-			if (i === todayIndex) {
-				setDateIndex(todayIndex + dayIndex - 1);
+			if (i === firstDayOfMonthIndex) {
+				setDateIndex(firstDayOfMonthIndex + parseInt(today, 10) - 1);
 			}
 		}
-		for (let i = 1; i <= 42 - dayIndex - thisMonthLength; i++) {
+		for (let i = 1; i <= 42 - firstDayOfMonthIndex - thisMonthLength; i++) {
 			orderedMonthArray.push(i);
 		}
 
+		console.log("ordered array", orderedMonthArray);
+
 		setNow([day, month, year]);
-		setDaysFromLastMonth(dayIndex);
+		setDaysFromLastMonth(firstDayOfMonthIndex);
 		setCalenderIndexes(orderedMonthArray);
 	};
 

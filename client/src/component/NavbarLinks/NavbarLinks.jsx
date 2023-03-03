@@ -12,7 +12,7 @@ const NavbarLinks = () => {
 		<div
 			className={`flex-none ${
 				window.innerWidth < 768 && "dropdown dropdown-end"
-			} fixed top-2 right-3 md:menu md:menu-horizontal`}>
+			} fixed top-8 right-12 md:menu md:menu-horizontal `}>
 			<label
 				tabIndex={0}
 				className="btn m-1 bg-transparent md:hidden hover:bg-bg-color">
