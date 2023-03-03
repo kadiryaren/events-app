@@ -1,24 +1,29 @@
 import { AiFillHome, AiOutlineFileSearch } from "react-icons/ai";
 import { SlCalender } from "react-icons/sl";
 import { MdBusiness } from "react-icons/md";
+import { useState } from "react";
 
-const navbarElements = [
+const navbarLinks = [
 	{
-		url: "home",
+		url: "/home",
 		icon: AiFillHome,
+		isActive: true,
 	},
 	{
-		url: "calender",
+		url: "/calender",
 		icon: SlCalender,
+		isActive: false,
 	},
 	{
-		url: "events",
+		url: "/events",
 		icon: AiOutlineFileSearch,
+		isActive: false,
 	},
 	{
-		url: "about",
+		url: "/about",
 		icon: MdBusiness,
+		isActive: false,
 	},
 ];
 
-export { navbarElements };
+export { navbarLinks };

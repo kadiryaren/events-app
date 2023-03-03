@@ -1,10 +1,15 @@
+import { useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./component";
-import { Home } from "./pages";
+import UserContext from "./context/user/UserContext";
+import { About, CalenderPage, Events, Home } from "./pages";
+import SingleEventPage from "./pages/SingleEventPage/SingleEventPage";
 
 function App() {
+	const { isLoading } = useContext(UserContext);
+
 	return (
-		<div className="App">
+		<div className="App ">
 			<Router>
 				<Navbar />
 				<Routes>
@@ -12,6 +17,22 @@ function App() {
 						exact
 						path="/"
 						element={<Home />}
+					/>
+					<Route
+						path="/calender"
+						element={<CalenderPage />}
+					/>
+					<Route
+						path="/about"
+						element={<About />}
+					/>
+					<Route
+						path="/events"
+						element={<Events />}
+					/>
+					<Route
+						path="/events/:id"
+						element={<SingleEventPage />}
 					/>
 				</Routes>
 			</Router>

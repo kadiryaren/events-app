@@ -2,7 +2,17 @@
 module.exports = {
 	content: ["./src/**/*.{js,jsx,ts,tsx}"],
 	theme: {
-		extend: {},
+		extend: {
+			colors: {
+				"bg-color": "#FAF7F0",
+				"primary-color": "#98A8F8",
+				"secondary-color": "#BCCEF8",
+				"info-color": "#8194DF",
+			},
+			minHeight: {
+				"navbar-height": "25vh",
+			},
+		},
 	},
 	daisyui: {
 		themes: [
