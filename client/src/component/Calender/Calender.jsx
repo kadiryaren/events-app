@@ -49,7 +49,7 @@ const Calendar = () => {
 		setCalenderIndexes(orderedMonthArray);
 	};
 
-	const getMonth = (direction) => {
+	const getMonth = async (direction) => {
 		let year = parseInt(now[2], 10);
 
 		// animation controller function
@@ -65,19 +65,29 @@ const Calendar = () => {
 			monthIndex = monthIndex === 0 ? 11 : monthIndex - 1;
 		}
 
-		orderCalender(new Date(year, monthIndex).toDateString().split(" "));
-		setIsThisMonth(false);
+		const thisMonthFlag =
+			months[monthIndex] === new Date().toDateString().split(" ")[1];
+
+		if (thisMonthFlag) {
+			orderCalender(new Date().toDateString().split(" "));
+		} else {
+			orderCalender(new Date(year, monthIndex).toDateString().split(" "));
+		}
+		setIsThisMonth(thisMonthFlag);
 	};
 
 	useEffect(() => {
-		orderCalender(new Date(2023, 2).toDateString().split(" "));
+		orderCalender(new Date().toDateString().split(" "));
 	}, []);
 
 	return (
 		<div className="w-3/4 mt-20">
-			<div className="w-inherit text-center text-2xl mb-8">
+			<motion.div
+				className="w-inherit text-center text-2xl mb-8"
+				animate={animationController}
+				variants={animationVariants}>
 				{now && <p>{`${now[2]}, ${now[1]}`}</p>}
-			</div>
+			</motion.div>
 			<div
 				id="calender__container "
 				className="grid grid-cols-calender">
@@ -92,8 +102,7 @@ const Calendar = () => {
 				<motion.div
 					className="bg-white rounded-lg shadow overflow-hidden grid grid-cols-7 border border-indigo-800 "
 					animate={animationController}
-					variants={animationVariants}
-					exit={animationVariants.exit}>
+					variants={animationVariants}>
 					{[
 						"Monday",
 						"Tuesday",
