@@ -56,7 +56,7 @@ const weekDays = {
 
 const animationVariants = {
 	left: {
-		x: -1000,
+		x: -100,
 		opacity: 0,
 		transition: {
 			type: "just",
@@ -64,7 +64,7 @@ const animationVariants = {
 		},
 	},
 	right: {
-		x: 1000,
+		x: 100,
 		opacity: 0,
 		transition: {
 			type: "just",
