@@ -81,7 +81,7 @@ const Calendar = () => {
 	}, []);
 
 	return (
-		<div className="w-3/4 mt-20">
+		<div className="w-2/4 mt-20">
 			<motion.div
 				className="w-inherit text-center text-2xl mb-8"
 				animate={animationController}
@@ -100,7 +100,7 @@ const Calendar = () => {
 					/>
 				</button>
 				<motion.div
-					className="bg-white rounded-lg shadow overflow-hidden grid grid-cols-7 border border-indigo-800 "
+					className="bg-white  rounded-lg shadow overflow-hidden grid grid-cols-7 border border-indigo-800 "
 					animate={animationController}
 					variants={animationVariants}>
 					{[
