@@ -12,6 +12,9 @@ module.exports = {
 			minHeight: {
 				"navbar-height": "25vh",
 			},
+			gridTemplateColumns: {
+				calender: "100px 1fr 100px",
+			},
 		},
 	},
 	daisyui: {

@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Calender } from "../../component";
 
 const CalenderPage = () => {
 	return (
-		<div className="flex justify-center items-center">
+		<div className="flex justify-center items-center w-screen">
 			<Calender />
 		</div>
 	);

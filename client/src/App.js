@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./component";
+import EventList from "./component/EventList/EventList";
 import UserContext from "./context/user/UserContext";
 import { About, CalenderPage, Events, Home } from "./pages";
 import SingleEventPage from "./pages/SingleEventPage/SingleEventPage";
@@ -31,8 +32,8 @@ function App() {
 						element={<Events />}
 					/>
 					<Route
-						path="/events/:id"
-						element={<SingleEventPage />}
+						path="/events/:date"
+						element={<EventList />}
 					/>
 				</Routes>
 			</Router>
