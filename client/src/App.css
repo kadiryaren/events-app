@@ -1,38 +1,60 @@
-.App {
-	text-align: center;
+.hero-title{
+	transition: 3s;
+	
 }
-
-.App-logo {
-	height: 40vmin;
-	pointer-events: none;
+.hero-title:nth-of-type(5n+1):hover{
+	
+	width: 20px;
+	color: red;
+	transition: .1s;
+	
 }
-
-@media (prefers-reduced-motion: no-preference) {
-	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
-	}
+.hero-title:nth-of-type(5n+2):hover{
+	width: 20px;
+	color: yellow;
+	transition: .1s;
+	
 }
-
-.App-header {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
+.hero-title:nth-of-type(5n+3):hover{
+	width: 20px;
+	color: purple;
+	transition: .1s;
+	
 }
-
-.App-link {
-	color: #61dafb;
+.hero-title:nth-of-type(5n+4):hover{
+	width: 20px;
+	color: blue;
+	transition: .1s;
+	
 }
-
-@keyframes App-logo-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+.hero-title:nth-of-type(5n+5):hover{
+	width: 20px;
+	color: green;
+	transition: .1s;
+	
 }
+/* .hero-title:nth-of-type(6):hover{
+	width: 20px;
+	color: red;
+	transition: .1s;
+}
+.hero-title:nth-of-type(7):hover{
+	width: 20px;
+	color: yellow;
+	transition: .1s;
+}
+.hero-title:nth-of-type(8):hover{
+	width: 20px;
+	color: purple;
+	transition: .1s;
+}
+.hero-title:nth-of-type(9):hover{
+	width: 20px;
+	color: blue;
+	transition: .1s;
+}
+.hero-title:nth-of-type(10):hover{
+	width: 20px;
+	color: red;
+	transition: .1s;
+} */

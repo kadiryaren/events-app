@@ -5,6 +5,7 @@ import EventList from "./component/EventList/EventList";
 import UserContext from "./context/user/UserContext";
 import { About, CalenderPage, Events, Home } from "./pages";
 import SingleEventPage from "./pages/SingleEventPage/SingleEventPage";
+import "./App.css"
 
 function App() {
 	const { isLoading } = useContext(UserContext);
