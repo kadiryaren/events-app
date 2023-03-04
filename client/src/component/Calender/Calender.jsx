@@ -1,57 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CalenderItem from "../CalenderItem/CalenderItem";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-
-const isFebruary29 = () => {
-	const year = new Date().getFullYear();
-	if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
-		// The year is a leap year
-		const feb29 = new Date(year, 1, 29);
-		return feb29.getMonth() === 1;
-	} else {
-		// The year is not a leap year
-		return false;
-	}
-};
-
-const daysInMonths = {
-	Jan: 31,
-	Feb: isFebruary29() ? 29 : 28,
-	Mar: 31,
-	Apr: 30,
-	May: 31,
-	Jun: 30,
-	Jul: 31,
-	Aug: 31,
-	Sep: 30,
-	Nov: 31,
-	Oct: 30,
-	Dec: 31,
-};
-
-const months = [
-	"Jan",
-	"Feb",
-	"Mar",
-	"Apr",
-	"May",
-	"Jun",
-	"Jul",
-	"Aug",
-	"Sep",
-	"Nov",
-	"Oct",
-	"Dec",
-];
-const weekDays = {
-	Mon: 0,
-	Tue: 1,
-	Wed: 2,
-	Thu: 3,
-	Fri: 4,
-	Sat: 5,
-	Sun: 6,
-};
+import CalenderContext from "../../context/Calender/CalenderContext";
+import { motion } from "framer-motion";
 
 const Calendar = () => {
 	const [dateIndex, setDateIndex] = useState(0);
@@ -61,12 +12,19 @@ const Calendar = () => {
 
 	const [calenderIndexes, setCalenderIndexes] = useState([]);
 
+	const {
+		daysInMonths,
+		months,
+		weekDays,
+		animationController,
+		animationVariants,
+		sequence,
+	} = useContext(CalenderContext);
+
 	const orderCalender = (dateArray) => {
 		let [day, month, today, year] = dateArray;
 		let firstDayOfMonthIndex =
 			new Date(parseInt(year), months.indexOf(month), 1).getDay() - 1;
-
-		console.log(firstDayOfMonthIndex);
 
 		let orderedMonthArray = [];
 		let dayIndex = weekDays[day];
@@ -93,6 +51,9 @@ const Calendar = () => {
 
 	const getMonth = (direction) => {
 		let year = parseInt(now[2], 10);
+
+		// animation controller function
+		sequence(direction);
 
 		let monthIndex = months.indexOf(now[1]);
 
@@ -128,7 +89,11 @@ const Calendar = () => {
 						color="shadow-indigo-800"
 					/>
 				</button>
-				<div className="bg-white rounded-lg shadow overflow-hidden grid grid-cols-7 border border-indigo-800 ">
+				<motion.div
+					className="bg-white rounded-lg shadow overflow-hidden grid grid-cols-7 border border-indigo-800 "
+					animate={animationController}
+					variants={animationVariants}
+					exit={animationVariants.exit}>
 					{[
 						"Monday",
 						"Tuesday",
@@ -156,7 +121,7 @@ const Calendar = () => {
 							}
 						/>
 					))}
-				</div>
+				</motion.div>
 				<button
 					className=" border rounded-lg transition duration-500  hover:bg-primary-color flex justify-center items-center"
 					onClick={() => getMonth("next")}>

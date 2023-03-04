@@ -3,8 +3,7 @@ import SearchBarDate from "../SearchBarDate/SearchBarDate";
 
 const SearchBar = () => {
 	const [placeholder, setPlaceholder] = useState("");
-	const [shouldPlaceholderStagger, setShouldPlaceholderStagger] =
-		useState(true);
+
 	const timeoutRef = useRef(null);
 
 	const staggerPlaceholder = (

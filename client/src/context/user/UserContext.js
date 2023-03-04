@@ -1,4 +1,4 @@
-import { createContext, useReducer, lazy, useEffect } from "react";
+import { createContext, useReducer, useEffect } from "react";
 import userReducer from "./UserReducer";
 import dummy from "../../dummy.json";
 
@@ -26,8 +26,6 @@ export const UserProvider = ({ children }) => {
 		fetch("https://jsonplaceholder.typicode.com/todos/30")
 			.then((response) => response.json())
 			.then((json) => {
-				console.log(json);
-
 				dispatch({
 					type: "LOAD_DATA",
 					payload: dummy.events,

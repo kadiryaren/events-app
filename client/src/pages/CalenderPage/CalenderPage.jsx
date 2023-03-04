@@ -1,10 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Calender } from "../../component";
+import { CalenderProvider } from "../../context/Calender/CalenderContext";
 
 const CalenderPage = () => {
 	return (
 		<div className="flex justify-center items-center w-screen">
-			<Calender />
+			<CalenderProvider>
+				<Calender />
+			</CalenderProvider>
 		</div>
 	);
 };
